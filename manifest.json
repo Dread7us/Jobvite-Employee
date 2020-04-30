@@ -1,0 +1,78 @@
+{
+  "manifest_version": 2,
+  "name": "JOBVITE EMPLOYEE",
+  "version": "4.2",
+  "options_page": "options.html",
+  "author": "Kerrick McGowan",
+  "description": "A tool to assist Jobvite employees. Created by Kerrick McGowan, 2019.",
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://app.jobvite.com/*",
+        "https://na45.salesforce.com/*",
+        "https://jobvite.atlassian.net/*",
+        "https://jobvite.my.salesforce.com/*",
+        "https://app.jvistg2.com/*",
+        "https://jobvite.lightning.force.com/*"
+      ],
+      "js": ["jquery-3.4.1.min.js", "record_time.js", "jquery.cookie.js", "flash.min.js", "pullsfdata.js"]
+    }
+  ],
+  "permissions": [
+        "https://app.jobvite.com/*",
+        "https://na45.salesforce.com/*",
+        "https://jobvite.atlassian.net/*",
+        "https://jobvite.my.salesforce.com/*",
+        "https://app.jvistg2.com/*",
+        "https://jobvite.lightning.force.com/*",
+        "storage"
+    ],
+  "icons": { "16": "icon16.png",
+             "48": "icon48.png",
+            "128": "icon128.png" },
+  "browser_action": {
+    "default_icon": "icon128.png",
+    "default_popup": "popup.html"
+  },
+  "commands": {
+    "Target SFDC": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S",
+        "windows": "Ctrl+Shift+S",
+        "mac": "Command+Shift+S"
+      },
+      "description": "Executes Target SFDC"
+    },
+    "Target Login": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L",
+        "windows": "Ctrl+Shift+L",
+        "mac": "Command+Shift+L"
+      },
+      "description": "Executes Target Login"
+    },
+    "Target Bug": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+1",
+        "windows": "Ctrl+Shift+1",
+        "mac": "Command+Shift+1"
+      },
+      "description": "Executes Target Bug"
+    },
+    "Target Task": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+2",
+        "windows": "Ctrl+Shift+2",
+        "mac": "Command+Shift+2"
+      },
+      "description": "Executes Target Task"
+    }
+  }
+}

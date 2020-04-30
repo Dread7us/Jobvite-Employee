@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<style>
+@font-face{
+ font-family:'grotesk';
+ src: url("./AlteHaasGroteskRegular.ttf");
+ -webkit-font-smoothing:antialiased !important;
+}
+
+@font-face{
+ font-family:'grotesk bold';
+ src: url("./AlteHaasGroteskBold.ttf");
+ -webkit-font-smoothing:antialiased !important;
+}
+
+.btn-group button {
+  background-color: #31469e; /* Blue background */
+  font-family:'grotesk';
+  height: 33px;
+  border: 1px solid Black; /* Black border */
+  color: White; /* White text */
+  padding: 8px 23px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  border-radius: 5px; /* Rounds the corners */
+  margin: 1px 1px;
+  font-size: 13px;
+  font-weight: bold;
+  white-space: nowrap;
+  text-align: center;
+  background: linear-gradient(to right, #fdb914 50%, #31469e 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .2s ease-out;
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  color: Black;
+  border: 1px solid Black;
+  background-position: left bottom;
+}
+
+/* The font normal*/
+.myfont {
+  color: Black;
+  font-family:'grotesk';
+  font-size: 11px;
+  font-weight: normal;
+}
+
+/* The font bold*/
+.myfontbold {
+  color: Black;
+  font-family:'grotesk bold';
+  padding: 0px 1px;
+  font-size: 11px;
+  font-weight: bold;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container {
+  display: block;
+  font-family:'grotesk';
+  position: relative;
+  padding-left: 27px;
+  margin-bottom: 0px;
+  color: Black;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: normal;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: -4px;
+  left: 1px;
+  height: 20px;
+  width: 20px;
+  background-color: #A9A9A9;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: Black;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: Black;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 6px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid #fdb914;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+</style>
+<head><title>Jobvite Employee Options</title></head>
+<body>
+<font class="myfontbold" style="font-size:15px">LOGIN AS INFO FOR DEMO:</font>
+<br>
+<hr NOSHADE SIZE="1" COLOR="Black">
+<font class="myfontbold">ENTER YOUR DEMO LOGIN AS EMAIL ADDRESS:</font>
+<br>
+<label>
+  <input type="text" id="email" size="82">
+</label>
+<br>
+<font class="myfontbold">ENTER YOUR DEFAULT REASON: </font>
+<br>
+<label>
+  <textarea id="reason" cols="80" rows="5"></textarea>
+</label>
+<br>
+<font class="myfontbold">ENTER YOUR CASE NUMBER (EX: 00421920):</font>
+<br>
+<label>
+  <input type="text" id="case" size="82">
+</label>
+<hr NOSHADE SIZE="1" COLOR="Black">
+
+<font class="myfontbold" style="font-size:15px">P1 PROCESS (DEFECT):</font>
+<br>
+<hr NOSHADE SIZE="1" COLOR="Black">
+<font class="myfontbold">ENTER JIRA#:</font>
+<br>
+<label>
+  <input type="text" id="jira" size="82">
+</label>
+<br>
+<font class="myfontbold">SELECT PRIORITY: </font>
+<br>
+<select id="priority">
+  <option value="P1">P1</option>
+  <option value="P2">P2</option>
+  <option value="P3">P3</option>
+</select>
+<br>
+<font class="myfontbold">ENTER APPROVED VERBIAGE (INCLUDING YOUR SIGNATURE): </font>
+<br>
+<label>
+  <textarea id="verbiage" cols="80" rows="5"></textarea>
+</label>
+<br style="display:block; content:''; margin-top:3px";>
+<label class="container" title="Check this option to automatically send case comment when using 'DEFECT'.">AUTO SEND CASE COMMENT
+  <input id="auto_defect" title="Check this option to automatically send case comment when using 'DEFECT'." type="checkbox">
+  <span class="checkmark"></span>
+</label>
+
+<hr NOSHADE SIZE="1" COLOR="Black">
+<font class="myfontbold" style="font-size:15px">SALESFORCE LIGHTNING SETTINGS:</font>
+<br>
+<hr NOSHADE SIZE="1" COLOR="Black">
+<label class="container" title="Check this option to disable refresh in Lightning (must work with one tab).">DISABLE REFRESH
+  <input id="lightning_refresh" title="Check this option to disable refresh in Lightning when using 'SOURCE SFDC' function." type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<br>
+<label class="container" title="Check this option to disable confirmation dialog when using Lightning and 'SOURCE SFDC'.">DISABLE REFRESH CONFIRMATION
+  <input id="lightning_confirmation" title="Check this option to disable refresh confirmation in Lightning when using 'SOURCE SFDC' function." type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<hr NOSHADE SIZE="1" COLOR="Black">
+<font class="myfontbold" style="font-size:15px">SALESFORCE CLASSIC SETTINGS:</font>
+<br>
+<hr NOSHADE SIZE="1" COLOR="Black">
+<label class="container" title="Check this option to automatically select 'Consult' when using 'TIME' function.">ADD CONSULT TAG WHEN USING TIME
+  <input id="consult" title="Check this option to automatically select 'Consult' when using 'TIME' function" type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<br>
+<label class="container" title="Check this option to ONLY select 'Consult' when using 'TIME' function.">ONLY ADD CONSULT TAG WHEN USING TIME
+  <input id="consult_only" title="Check this option to ONLY select 'Consult' when using 'TIME' function" type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<hr NOSHADE SIZE="1" COLOR="Black">
+<font class="myfontbold" style="font-size:15px">MISCELLANEOUS SETTINGS:</font>
+<br>
+<hr NOSHADE SIZE="1" COLOR="Black">
+<label class="container" title="Check this option to provide a confirmation before resetting the timer.">RESET TIMER CONFIRMATION
+  <input id="reset_timer_confirmation" title="Check this option to provide a confirmation before resetting the timer." type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<br>
+<label class="container" title="Check this option to automatically log you in when using the 'LOGIN' function.">AUTO SUBMIT ON LOGIN
+  <input id="auto_login" title="Check this option to automatically log you in when using the 'LOGIN' function." type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<hr NOSHADE SIZE="1" COLOR="Black">
+<div id="status" class="btn-group">
+  <button id="save">SAVE</button>
+</div>
+
+<script src="options.js"></script>
+</body>
+</html>

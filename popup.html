@@ -1,0 +1,229 @@
+<!Doctype html>
+<html>
+<style>
+@font-face{
+ font-family:'grotesk';
+ src: url("./AlteHaasGroteskRegular.ttf");
+ -webkit-font-smoothing:antialiased !important;
+}
+
+@font-face{
+ font-family:'grotesk bold';
+ src: url("./AlteHaasGroteskBold.ttf");
+ -webkit-font-smoothing:antialiased !important;
+}
+
+.btn-group button {
+  background-color: #31469e; /* Blue background */
+  font-family:'grotesk';
+  width: 143px;
+  height: 33px;
+  border: 1px solid Black; /* Black border */
+  color: White; /* White text */
+  padding: 8px 23px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  border-radius: 0px; /* Rounds the corners */
+  margin: 1px 1px;
+  font-size: 13px;
+  font-weight: bold;
+  white-space: nowrap;
+  text-align: center;
+  background: linear-gradient(to right, #fdb914 50%, #31469e 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .2s ease-out;
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  color: Black;
+  border: 1px solid Black;
+  background-position: left bottom;
+}
+
+/* The font normal*/
+.myfont {
+  color: Black;
+  font-family:'grotesk';
+  font-size: 11px;
+  font-weight: normal;
+}
+
+/* The font bold*/
+.myfontbold {
+  color: Black;
+  font-family:'grotesk bold';
+  padding: 0px 1px;
+  font-size: 11px;
+  font-weight: bold;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container {
+  display: block;
+  font-family:'grotesk';
+  position: relative;
+  padding-left: 27px;
+  padding-top: 2px;
+  margin-bottom: 10px;
+  color: Black;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: normal;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: -2px;
+  left: 1px;
+  height: 20px;
+  width: 20px;
+  background-color: #A9A9A9;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: Black;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: Black;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 6px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid #fdb914;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.flex-child {
+  background-color: #31469e; /* Blue background */
+  font-family:'grotesk';
+  color: White;
+  height: 33px;
+  border: 1px solid Black; /* Black border */
+  cursor: pointer; /* Pointer/hand icon */
+  margin: 1px 1px;
+  font-size: 13px;
+  font-weight: bold;
+  width: 100%;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-box-flex: 1 1 auto;
+  -moz-box-flex:  1 1 auto;
+  -webkit-flex:  1 1 auto;
+  -ms-flex:  1 1 auto;
+  flex:  1 1 auto;
+
+}
+
+.flex button:hover {
+  color: Black;
+  background-color: #fdb914;
+}
+</style>
+<head>
+
+</head>
+<body id="the_body" bgcolor=White>
+  <div>
+    <center><img id="jobvite" src="/jobvite.png" width="123px" height="18px" style="padding-bottom: 3px;"/></center>
+  </div>
+<div class="btn-group" style="width:100%">
+  <button id="btnSource" title = "Pulls the data from SFDC and starts a new timer. Select options below if you want to also reset timer and/or copy to clipboard for adding to existing Jiras.">SOURCE SFDC</button>
+  <hr NOSHADE SIZE="1" COLOR="White" style='margin-bottom: -2px;'>
+  <label class="container" title="Check this option to copy a template to your clipboard when you click 'SOURCE SFDC'. After that, you can paste it into the Slack channel.">COPY FOR SLACK
+    <input id="clip_board_slack" title="Check this option to copy a template to your clipboard when you click 'SOURCE SFDC'. After that, you can paste it into the Slack channel." type="checkbox">
+    <span class="checkmark"></span>
+  </label>
+  <label class="container" title="Check this option to copy a template to your clipboard when you click 'SOURCE SFDC'. After that, you can paste it into an existing Jira comment box.">COPY FOR JIRA
+    <input id="clip_board" title="Check this option to copy a template to your clipboard when you click 'SOURCE SFDC'. After that, you can paste it into an existing Jira comment box." type="checkbox">
+    <span class="checkmark"></span>
+  </label>
+
+  <hr NOSHADE SIZE="1" COLOR="Black">
+  <font class="myfontbold" style="width:100%">TIME: </font>
+  <font class="myfont" style="width:100%" id="showTime"></font><br>
+  <font class="myfontbold" style="width:100%">CASE: </font></b>
+  <font class="myfont" style="width:100%" id="showCase"></font><br>
+  <hr NOSHADE SIZE="1" COLOR="Black">
+
+</div>
+<div class="flex">
+  <button class="flex-child" id="btnTargetLIA" title = "Click this button on the 'Login As' page to post the data you pulled from the case.">LOGIN</button>
+  <button class="flex-child" id="btnTargetJIRA" title = "Creates a new Jira ticket with data pulled from SFDC.">BUG</button>
+</div>
+<div class="flex">
+  <button class="flex-child" id="btnDemo" title = "Login with your demo credentials.">DEMO</button>
+  <button class="flex-child" id="btnTargetTASK" title = "Creates a new Jira task with data pulled from SFDC.">TASK</button>
+</div>
+<div class="flex">
+  <button class="flex-child" id="btnP1" title = "This will add Jira ticket to case, send case comment and change status (must setup in Options).">DEFECT</button>
+  <button class="flex-child" id="btnTargetTIME" title = "Records your time in SFDC (calculates from when you click any of the source buttons or reset time).">TIME</button>
+</div>
+
+<div class="btn-group" style="width:100%">
+  <button id="btnResetTIMER" title = "Starts a new timer.">RESET TIMER</button>
+</div>
+<hr NOSHADE SIZE="1" COLOR="White" style='margin-bottom: -2px;'>
+<font class="myfontbold" style="width:100%">VERSION: </font>
+<font class="myfont" style="width:100%" id="showVersion"></font>
+<img id="help" src="/help.png" style='float:right;
+  margin-top: -5px; margin-right: -5px; margin-left: -5px; cursor: pointer;' title="Click this icon to open up the help page in a new tab."/>
+<img id="settings" src="/settings.png" style='float:right;
+  margin-top: -5px; cursor: pointer;' title="Click this icon to open up the options page."/>
+<script src="popup.js"></script>
+</body>
+</html>
