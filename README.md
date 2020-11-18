@@ -1,2 +1,2 @@
 # Jobvite-Employee
-Google Extension to assist Jobvite Employees.
+Google Chrome Extension to assist Jobvite Employees.
